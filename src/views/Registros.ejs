@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <% include parteals/head %>
+    </head>
+    <body>
+<header class="masthead my-3 ml-auto ">
+    <div class="inner">
+    <nav class="nav nav-masthead justify-content-center ">
+          
+    <a class="nav-link" href="/">Inicio</a>
+    
+  </nav>
+
+    </div>
+</header>
+        
+    <div class="container my-5">
+        
+    <h1 class="text-center">Recargas Telefonicas</h1>
+    <form action="/add" method="post">
+    <legend>Insertar Recarga</legend>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" class="form-control" id="title">
+   </div>
+    
+   <div class="form-group">
+        <label for="numero">Numero</label>
+        <input type="number" name="numero" class="form-control" >
+   </div>
+
+   <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" name="precio" class="form-control" >
+    </div>
+
+    
+   <div class="form-group">
+   <label for="precio">Fecha</label>
+   <input type="date" name="fecha" class="form-control" >
+</div>
+
+    <input type="submit" class="btn btn-primary btn-block mt-5" value="Insertar ">
+               
+    </form>
+    <hr class="mt-5">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+        <th>Cantidad</th>
+        <th>Nombre</th>
+        <th>Numero</th>
+        <th>Precio</th>
+        <th>Fecha</th>
+        <th>Operaciones</th>
+        
+        
+        </tr>
+        </thead>
+        <tbody>
+        <% for(var i=0; i<tasks.length; i++) {%>
+        <tr>
+        <td><%= (i + 1) %></td>
+        <td><%= tasks[i].nombre %></td>
+        <td><%= tasks[i].numero %></td>
+        <td><%= tasks[i].precio %></td>
+        <td><%= tasks[i].fecha %></td>
+        <td>
+        <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger btn-block ">Delete</a>
+        <a href="/edit/<%= tasks[i]._id %>" class="btn btn-primary btn-block">Edit</a>
+        </td>                  
+        </tr>
+     <% } %>
+
+        </tbody>
+    </table>
+    </div>
+    
+    </body>
+</html>
